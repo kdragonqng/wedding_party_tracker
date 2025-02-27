@@ -4,41 +4,45 @@ import en from '../../../assets/language/en.json';
 import vi from '../../../assets/language/vi.json';
 import { StorageService } from './storageService';
 import { LanguageText } from '../../types/languageText';
-import { AbstractLanguageService, LanguageCode, StorageKey } from 'one-frontend-framework';
+import { StorageKey } from '../../common/constants/storageKey';
+import { LanguageCode } from '../../common/constants/languageCode';
 
 @singleton()
-export class LanguageService extends AbstractLanguageService<StorageService> {
-    public storeService: StorageService = container.resolve(StorageService);
-    public text: LanguageText = {} as LanguageText;
+export class LanguageService {
+    public readonly storeService = container.resolve(StorageService);
+    public text!: LanguageText;
+    public currentLanguage!: string;
 
-    public async initLanguage(): Promise<void> {
-        let currentLanguage = await this.storeService.getObject<string>(StorageKey.language);
+    constructor() {
+        this.initLanguage();
+    }
+
+    /** Initialize language */
+    public async initLanguage() {
+        console.log('initLanguage');
+        let currentLanguage = await this.storeService.load<string>(StorageKey.language);
         if (!currentLanguage) {
             currentLanguage = LanguageCode.VI;
         }
         this.getLanguageText(currentLanguage);
     }
 
-    /**
-     * Set language to store
-     * @param value 
-     */
-    public async setLanguage(value: string): Promise<void> {
-        const me = this;
-        await me.storeService.saveObject<string>(StorageKey.language, value);
-        me.getLanguageText(value);
+    /** Set language to store */
+    public async setLanguage(value: string) {
+        const currentLanguage = await this.storeService.load<string>(StorageKey.language);
+        if (currentLanguage !== value) {
+            await this.storeService.save<string>(StorageKey.language, value);
+            this.getLanguageText(value);
+        }
+
     }
 
-    /**
-     * Get language text from json
-     * @param value 
-     */
     public getLanguageText(value: string): void {
         const me = this;
-        if (value == LanguageCode.EN) {
+        me.currentLanguage = value;
+        if (value === LanguageCode.EN) {
             me.text = en as unknown as LanguageText;
-        }
-        else {
+        } else {
             me.text = vi as unknown as LanguageText;
         }
     }

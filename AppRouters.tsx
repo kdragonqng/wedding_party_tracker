@@ -6,6 +6,7 @@ export class AppScreenProps {
 }
 
 export type AppSreenStackParamList = {
+    Welcome: AppScreenProps;
     Login: AppScreenProps;
     Home: AppScreenProps;
 };
@@ -13,6 +14,7 @@ export type AppSreenStackParamList = {
 export type AppRouteParamList = {
     Login: 'Login';
     Home: 'Home';
+    Welcome: 'Welcome';
 };
 
 export type AppHomeScreenProps = NativeStackScreenProps<AppSreenStackParamList, AppRouteParamList['Home']>;

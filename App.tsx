@@ -1,17 +1,18 @@
 import 'reflect-metadata';
 import { container } from 'tsyringe';
 import React, { useEffect, useState } from 'react';
-import { SafeAreaView, StatusBar, useColorScheme } from 'react-native';
+import { StatusBar, useColorScheme, View } from 'react-native';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 import NavigationContainerComponents from './src/common/components/NavigationContainerComponents';
-import AppStyle from './App.style';
+// import AppStyle from './App.style';
 import { LanguageService } from './src/services/logic/languageSerivce';
+import { AuthProvider } from './src/contexts/AuthContext';
 
 function App(): React.JSX.Element {
   const languageService = container.resolve(LanguageService);
   const [isReady, setIsReady] = useState(false);
   const isDarkMode = useColorScheme() === 'dark';
-  const appStyle = AppStyle();
+  // const appStyle = AppStyle();
   const statusbarColor = {
     backgroundColor: isDarkMode ? Colors.light : Colors.dark
   };
@@ -28,17 +29,22 @@ function App(): React.JSX.Element {
 
   if (isReady) {
     return (
-      <SafeAreaView style={appStyle.default}>
+      <AuthProvider>
         <StatusBar
-          barStyle={isDarkMode ? 'light-content' : 'dark-content'}
+          // barStyle={isDarkMode ? 'light-content' : 'dark-content'}
           backgroundColor={statusbarColor.backgroundColor}
         />
         <NavigationContainerComponents />
-      </SafeAreaView>
+      </AuthProvider>
+
     );
   }
   else {
-    return <SafeAreaView></SafeAreaView>;
+    return (
+      <AuthProvider>
+        <View></View>
+      </AuthProvider>
+    );
   }
 }
 
