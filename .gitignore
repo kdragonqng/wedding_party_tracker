@@ -83,5 +83,6 @@ package-lock.json
 #key
 ios/GoogleService-Info.plist
 src/config/
+android/app/google-service.json
 
 
