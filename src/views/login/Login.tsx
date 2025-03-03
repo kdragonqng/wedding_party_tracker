@@ -1,7 +1,8 @@
 import React from 'react';
-import { Text, TouchableOpacity, View } from 'react-native';
+import { View } from 'react-native';
 import LoginHook from './Login.hook';
 import BaseStyle from '../../common/constants/BaseStyle';
+import { LoginButton } from 'react-native-fbsdk-next';
 
 function Login(): React.JSX.Element {
     const elHook = LoginHook();
@@ -12,11 +13,9 @@ function Login(): React.JSX.Element {
         return (
             <View style={BaseStyle.container}>
                 <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                    <TouchableOpacity onPress={elHook.handleLoginWithFacebook}>
-                        <View style={BaseStyle.primaryBtn}>
-                            <Text style={BaseStyle.primaryTextBtn}>{'Login with facebook'}</Text>
-                        </View>
-                    </TouchableOpacity>
+                    <LoginButton
+                        onLoginFinished={elHook.handleLoginWithFacebook}
+                        onLogoutFinished={() => console.log("logout.")} />
                 </View>
 
 

@@ -7,6 +7,8 @@ import NavigationContainerComponents from './src/common/components/NavigationCon
 // import AppStyle from './App.style';
 import { LanguageService } from './src/services/logic/languageSerivce';
 import { AuthProvider } from './src/contexts/AuthContext';
+import { getApps } from "@react-native-firebase/app";
+import { initializeApp } from 'firebase/app';
 
 function App(): React.JSX.Element {
   const languageService = container.resolve(LanguageService);
@@ -17,8 +19,16 @@ function App(): React.JSX.Element {
     backgroundColor: isDarkMode ? Colors.light : Colors.dark
   };
 
+  function checkFirebase() {
+    if (getApps().length === 0) {
+      initializeApp(); // Không cần truyền config, vì lấy từ google-services.json
+      console.log("Firebase initialized!");
+    }
+  };
+
   async function init(): Promise<void> {
     await languageService.initLanguage();
+    checkFirebase();
     setIsReady(true);
   }
 
