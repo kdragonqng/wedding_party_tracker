@@ -82,6 +82,8 @@ package-lock.json
 # Ios
 #key
 ios/GoogleService-Info.plist
+ios/Pods/
+ios/Podfile.lock
 src/config/
 android/app/google-services.json
 

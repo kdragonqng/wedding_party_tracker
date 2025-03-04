@@ -3,7 +3,6 @@ import React
 import React_RCTAppDelegate
 import ReactAppDependencyProvider
 import FirebaseCore
-import FBSDKCoreKit
 
 @main
 class AppDelegate: RCTAppDelegate {
@@ -17,12 +16,6 @@ class AppDelegate: RCTAppDelegate {
 
     // Khởi tạo Firebase
     FirebaseApp.configure()
-
-    // Khởi tạo Facebook SDK
-    ApplicationDelegate.shared.application(
-      application,
-      didFinishLaunchingWithOptions: launchOptions
-    )
 
     return super.application(application, didFinishLaunchingWithOptions: launchOptions)
   }
