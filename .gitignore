@@ -80,4 +80,9 @@ package-lock.json
 # Android
 # android/
 # Ios
-# ios/
+#key
+ios/GoogleService-Info.plist
+src/config/
+android/app/google-services.json
+
+
