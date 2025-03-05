@@ -12,7 +12,20 @@
           "package_name": "com.weeddingpartytracker"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "245294411797-vvasphutquaoh8g6dbqpmfv0nlokmh30.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.weeddingpartytracker",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "245294411797-234vk98gap0jcfs0ciin9o4j87nfe5fj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyDyrHR_ltgFl2JBJ8YE4isj9x35iocOA6s"
@@ -20,7 +33,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "245294411797-234vk98gap0jcfs0ciin9o4j87nfe5fj.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "245294411797-1r5dhfilqubl2gkekbsojk1df3ntsm9c.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.weeddingpartytracker"
+              }
+            }
+          ]
         }
       }
     }

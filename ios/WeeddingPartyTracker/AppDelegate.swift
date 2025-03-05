@@ -32,17 +32,17 @@ class AppDelegate: RCTAppDelegate {
 #endif
   }
 
-  // Xử lý callback URL cho Facebook Login
-  override func application(
-    _ app: UIApplication,
-    open url: URL,
-    options: [UIApplication.OpenURLOptionsKey: Any] = [:]
-  ) -> Bool {
-    return ApplicationDelegate.shared.application(
-        app,
-        open: url,
-        sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
-        annotation: options[UIApplication.OpenURLOptionsKey.annotation]
-    ) || super.application(app, open: url, options: options)
-  }
+  // // Xử lý callback URL cho Facebook Login
+  // override func application(
+  //   _ app: UIApplication,
+  //   open url: URL,
+  //   options: [UIApplication.OpenURLOptionsKey: Any] = [:]
+  // ) -> Bool {
+  //   return ApplicationDelegate.shared.application(
+  //       app,
+  //       open: url,
+  //       sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
+  //       annotation: options[UIApplication.OpenURLOptionsKey.annotation]
+  //   ) || super.application(app, open: url, options: options)
+  // }
 }
