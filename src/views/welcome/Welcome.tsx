@@ -1,14 +1,19 @@
 import React from "react";
 import { Text, View } from "react-native";
 import BaseStyle from "../../common/constants/BaseStyle";
+import WelcomeHook from "./Welcome.hook";
 
 function Welcome(): React.JSX.Element {
-    // const style = WelcomeStyle();
+    const elHook = WelcomeHook();
+    if (elHook) {
+        return (
+            <View style={[BaseStyle.container, BaseStyle.centerCol]}>
+                <Text>{'Welcome'}</Text>
+            </View>
+        );
+    } else {
+        return <View></View>;
+    }
 
-    return (
-        <View style={[BaseStyle.container, BaseStyle.centerCol]}>
-            <Text>{'Welcome'}</Text>
-        </View>
-    );
 }
 export default Welcome;

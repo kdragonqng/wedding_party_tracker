@@ -10,23 +10,19 @@ function NavigationContainerComponents(): React.JSX.Element {
     const { isAuthenticated } = useContext(AuthContext);
     return (
         <NavigationContainer>
-            {isAuthenticated === undefined &&
-                <AppRouterStack.Navigator initialRouteName="Welcome" screenOptions={{ headerShown: false }}>
-                    <AppRouterStack.Screen name="Welcome" component={Welcome} initialParams={{ needLogin: false }} />
-                </AppRouterStack.Navigator>
-            }
-            {isAuthenticated === true &&
+            {
+                isAuthenticated === true &&
                 <AppRouterStack.Navigator initialRouteName="Home" screenOptions={{ headerShown: false }}>
                     <AppRouterStack.Screen name="Home" component={Home} initialParams={{ needLogin: false }} />
                 </AppRouterStack.Navigator>
             }
             {
                 isAuthenticated === false &&
-                <AppRouterStack.Navigator initialRouteName="Login" screenOptions={{ headerShown: false, gestureEnabled: false, }}>
+                <AppRouterStack.Navigator initialRouteName="Welcome" screenOptions={{ headerShown: false, gestureEnabled: false, }}>
+                    <AppRouterStack.Screen name="Welcome" component={Welcome} initialParams={{ needLogin: false }} />
                     <AppRouterStack.Screen name="Login" component={Login} initialParams={{ needLogin: false }} />
                 </AppRouterStack.Navigator>
             }
-
         </NavigationContainer>
     );
 }

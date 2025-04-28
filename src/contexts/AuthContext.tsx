@@ -8,15 +8,15 @@ import { LogggingService } from '../services/logic/loggingService';
 
 export interface AuthContextType {
     user: AccountInfo | null;
-    isAuthenticated: boolean | undefined;
-    handleIsAuthenticated: (value: boolean | undefined) => void;
+    isAuthenticated: boolean;
+    handleIsAuthenticated: (value: boolean) => void;
     handleSetUser: (userData: AccountInfo | null) => void;
     handleLogout: () => void;
 }
 
 export const AuthContext = createContext<AuthContextType>({
     user: null,
-    isAuthenticated: undefined,
+    isAuthenticated: false,
     handleIsAuthenticated: () => { },
     handleSetUser: () => { },
     handleLogout: () => { },
@@ -27,7 +27,7 @@ export const useAuth = () => {
 };
 
 export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-    const [isAuthenticated, setIsAuthenticated] = useState<boolean | undefined>(undefined);
+    const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
     const [user, setUser] = useState<AccountInfo | null>(null);
 
     useEffect(() => {
@@ -49,7 +49,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         }, 1000);
     }, []);
 
-    function handleIsAuthenticated(value: boolean | undefined) {
+    function handleIsAuthenticated(value: boolean) {
         setIsAuthenticated(value);
     };
 

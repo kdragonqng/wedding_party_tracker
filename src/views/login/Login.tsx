@@ -17,7 +17,7 @@ function Login(): React.JSX.Element {
                             <Text style={BaseStyle.primaryTextBtn}>{'Login with facebook'}</Text>
                         </View>
                     </TouchableOpacity> */}
-                    <TouchableOpacity onPress={elHook.handleLoginWithGoogle}>
+                    <TouchableOpacity onPress={() => elHook.handleLoginWithFacebook()}>
                         <View style={BaseStyle.primaryBtn}>
                             <Text style={BaseStyle.primaryTextBtn}>{'Login with Google'}</Text>
                         </View>

@@ -1,12 +1,25 @@
 import { useEffect, useState } from 'react';
 import { HomeState } from './Home.state';
-// import { NavigationProp, useNavigation } from '@react-navigation/native';
-// import { AppRouteParamList } from '../../../AppRouters';
+import LanguageHook from '../../common/hook/LanguageHook';
+import { StorageService } from '../../services/logic/storageService';
+import { StorageKey } from '../../common/constants/storageKey';
+import { container } from 'tsyringe';
+import { useAuth } from '../../contexts/AuthContext';
 
 function HomeHook() {
     const [componentState, setComponentState] = useState(new HomeState());
-    // const navigation = useNavigation<NavigationProp<AppRouteParamList>>();
+    const lang = LanguageHook();
+    const storageService = container.resolve(StorageService);
+    const auth = useAuth();
 
+    async function changeLanguage(language: string): Promise<void> {
+        await lang.changeLanguage(language);
+    }
+
+    async function logOut(): Promise<void> {
+        await storageService.remove(StorageKey.authObject);
+        auth.handleIsAuthenticated(false);
+    }
     /**
      * Load page
      */
@@ -19,10 +32,12 @@ function HomeHook() {
     useEffect(() => {
         // userEffect implement here
         loadPage();
-        console.log('Home load');
     }, []);
     return {
-        componentState
+        componentState,
+        changeLanguage,
+        lang,
+        logOut
     };
 }
 
