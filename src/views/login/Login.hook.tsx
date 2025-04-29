@@ -1,15 +1,18 @@
 import { useEffect, useState } from 'react';
 import { LoginState } from './Login.state';
-import { GoogleSignin, statusCodes } from
+import { GoogleSignin } from
     '@react-native-google-signin/google-signin';
-import { AppRouteParamList } from '../../../AppRouters';
-import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { useAuth } from '../../contexts/AuthContext';
+import { StorageService } from '../../services/logic/storageService';
+import { container } from 'tsyringe';
+import { StorageKey } from '../../common/constants/storageKey';
+import { AuthObject } from '../../types/authType';
+import { mapSignInResponseToAuthObject } from '../../utils/utils';
 
 
 function LoginHook() {
     const [componentState, setComponentState] = useState(new LoginState());
-    const navigation = useNavigation<NavigationProp<AppRouteParamList>>();
+    const storageService = container.resolve(StorageService);
     const auth = useAuth();
 
     async function loadPage(): Promise<void> {
@@ -25,22 +28,16 @@ function LoginHook() {
     async function handleLoginWithGoogle() {
         try {
             await GoogleSignin.hasPlayServices();
-            const userInfo = await GoogleSignin.signIn();
             await GoogleSignin.revokeAccess();
+            const userInfo = await GoogleSignin.signIn();
             if (userInfo) {
-                console.log(userInfo);
+                const authCookie = mapSignInResponseToAuthObject(userInfo);
+                await storageService.save<AuthObject>(StorageKey.authObject, authCookie);
                 auth.handleIsAuthenticated(true);
             }
         } catch (error) {
-            if ((error as any).code === statusCodes.SIGN_IN_CANCELLED) {
-                // user cancelled the login flow
-            } else if ((error as any) === statusCodes.IN_PROGRESS) {
-                console.log(error);
-            } else if ((error as any) === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
-                console.log(error);
-            } else {
-                console.log(error);
-            }
+            // auth.handleIsAuthenticated(false);
+            console.log('Login error', error);
         }
     }
 
