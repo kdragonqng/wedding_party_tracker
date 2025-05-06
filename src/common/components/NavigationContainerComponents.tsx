@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { AppRouterStack } from '../../../AppRouters';
-import Home from '../../views/home/Home';
 import { AuthContext } from '../../contexts/AuthContext';
 import Welcome from '../../views/welcome/Welcome';
 import Login from '../../views/login/Login';
+import Tabs from '../../navigation/MainTab';
 
 function NavigationContainerComponents(): React.JSX.Element {
     const { isAuthenticated } = useContext(AuthContext);
@@ -12,8 +12,8 @@ function NavigationContainerComponents(): React.JSX.Element {
         <NavigationContainer>
             {
                 isAuthenticated === true &&
-                <AppRouterStack.Navigator initialRouteName="Home" screenOptions={{ headerShown: false }}>
-                    <AppRouterStack.Screen name="Home" component={Home} initialParams={{ needLogin: false }} />
+                <AppRouterStack.Navigator initialRouteName="MainTab" screenOptions={{ headerShown: false }}>
+                    <AppRouterStack.Screen name="MainTab" component={Tabs} initialParams={{ needLogin: true }} />
                 </AppRouterStack.Navigator>
             }
             {

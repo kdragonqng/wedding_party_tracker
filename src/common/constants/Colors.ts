@@ -1,15 +1,6 @@
 export const Colors = {
     //Primary
-    primary900: '#1C3C96',
-    primary800: '#1d3eb0',
-    primary700: '#1c4bd9',
-    primary600: '#2460ec',
-    primary500: '#3A7FF7',
-    primary400: '#5fa3fb',
-    primary300: '#92c3fe',
-    primary200: '#bfdafe',
-    primary100: '#dbe9fe',
-    primary50: '#eff6ff',
+    primary: '#212529',
 
     //secondary
     secondary900: '#FF7800',

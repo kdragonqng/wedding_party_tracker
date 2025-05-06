@@ -44,7 +44,7 @@ export default StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         paddingHorizontal: 16,
-        backgroundColor: Colors.primary600,
+        backgroundColor: Colors.primary,
     },
     primaryTextBtn: {
         color: Colors.white as string,
@@ -58,7 +58,7 @@ export default StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         paddingHorizontal: 16,
-        backgroundColor: Colors.primary50 as string,
+        backgroundColor: Colors.primary as string,
     },
     thirdBtn: {
         borderRadius: BorderRadius.br12,
@@ -67,7 +67,7 @@ export default StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         paddingHorizontal: 16,
-        backgroundColor: Colors.primary50 as string,
+        backgroundColor: Colors.primary as string,
     },
     thirdTextBtn: {
         color: Colors.skyBlue as string,
