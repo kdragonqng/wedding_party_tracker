@@ -7,9 +7,6 @@ import NavigationContainerComponents from './src/common/components/NavigationCon
 // import AppStyle from './App.style';
 import { LanguageService } from './src/services/logic/languageSerivce';
 import { AuthProvider } from './src/contexts/AuthContext';
-import { getApps } from "@react-native-firebase/app";
-import { initializeApp } from 'firebase/app';
-import { GoogleSignin } from '@react-native-google-signin/google-signin';
 
 function App(): React.JSX.Element {
   const languageService = container.resolve(LanguageService);
@@ -20,27 +17,9 @@ function App(): React.JSX.Element {
     backgroundColor: isDarkMode ? Colors.light : Colors.dark
   };
 
-  function checkFirebase() {
-    if (getApps().length === 0) {
-      initializeApp(); // Không cần truyền config, vì lấy từ google-services.json
-      console.log("Firebase initialized!");
-    }
-  };
-
-  function initGoogle() {
-    GoogleSignin.configure({
-
-      // Client ID of type WEB for your server (needed
-      // to verify user ID and offline access)
-      webClientId: '245294411797-234vk98gap0jcfs0ciin9o4j87nfe5fj.apps.googleusercontent.com',
-    });
-
-  }
 
   async function init(): Promise<void> {
     await languageService.initLanguage();
-    checkFirebase();
-    initGoogle();
     setIsReady(true);
   }
 
