@@ -1,101 +1,10 @@
 export const Colors = {
     //Primary
     primary: '#212529',
+    primaryDark: '#1e1e1e',
 
     //secondary
-    secondary900: '#FF7800',
-    secondary800: '#F68738',
-    secondary700: '#F79651',
-    secondary600: '#F8A56A',
-    secondary500: '#F9B483',
-    secondary400: '#FAC096',
-    secondary300: '#FBCEAD',
-    secondary200: '#FDDAC0',
-    secondary100: '#FEE8DA',
-    secondary50: '#FEF5EF',
-
-    //neutral
-    neutral900: '#111827',
-    neutral800: '#1f2937',
-    neutral700: '#374151',
-    neutral600: '#4b5563',
-    neutral500: '#6b7280',
-    neutral400: '#9ca3af',
-    neutral300: '#d1d5db',
-    neutral200: '#E7E9EC',
-    neutral100: '#f3f4f6',
-    neutral50: '#f9fafb',
-
-    //success - green
-    green700: '#15803d',
-    green600: '#16a34a',
-    green500: '#22c55e',
-    green200: '#bbf7d0',
-    green100: '#dcfce7',
-    green50: '#ecfdf5',
-
-    //warning - yellow
-    yellow900: '#FFB600',
-    yellow700: '#a16207',
-    yellow600: '#ca8a04',
-    yellow500: '#eab308',
-    yellow200: '#fef08a',
-    yellow100: '#fef9c3',
-    yellow50: '#fefce8',
-
-    //error - red
-    red700: '#b91c1c',
-    red600: '#dc2626',
-    red500: '#ef4444',
-    red400: '#E54939',
-    red200: '#fecaca',
-    red100: '#fee2e2',
-    red50: '#fef2f2',
-
-    //Sky
-    sky700: '#0369a1',
-    sky600: '#0284c7',
-    sky500: '#0ea5e9',
-    sky200: '#bae6fd',
-    sky100: '#e0f2fe',
-    sky50: '#f0f9ff',
-    //Lime
-    lime700: '#4d7c0f',
-    lime500: '#84cc16',
-    lime100: '#ecfccb',
-    //Emerald
-    emerald700: '#047857',
-    emerald500: '#10b981',
-    emerald100: '#dcfce7',
-    //Cyan
-    cyan700: '#1d4ed8',
-    cyan500: '#06b6d4',
-    cyan100: '#cffafe',
-
-    //blue
-    blue700: '#1d4ed8',
-    blue500: '#3b82f6',
-    blue100: '#dbeafe',
-
-    //Indigo
-    indigo700: '#4338ca',
-    indigo500: '#6366f1',
-    indigo100: '#e0e7ff',
-
-    //Purple
-    purple700: '#7e22ce',
-    purple500: '#a855f7',
-    purple100: '#faf5ff',
-
-    //pink
-    pink700: '#be185d',
-    pink500: '#ec4899',
-    pink100: '#fce7f3',
-
-    //orange
-    orange700: '#c2410c',
-    orange500: '#f97316',
-    orange100: '#ffedd5',
+    secondary: '#FFD700',
 
     //text
     text: '#1f2937',

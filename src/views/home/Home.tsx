@@ -145,6 +145,8 @@ function Home(): React.JSX.Element {
                     renderItem={renderItem}
                     keyExtractor={item => item.id}
                     ItemSeparatorComponent={() => <View style={{ height: 24 }} />}
+                    showsVerticalScrollIndicator={false}
+                    contentContainerStyle={{ paddingBottom: 32 }} // Thêm dòng này
                 />
             </SafeAreaView>
         );

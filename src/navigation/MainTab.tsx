@@ -2,122 +2,80 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Home from '../views/home/Home';
 import React from 'react';
 import Profile from '../views/profile/Profile';
-import { BorderRadius } from '../common/constants/BorderRadius';
-import { Image, View } from 'react-native';
 import AddEvent from '../views/addEvent/AddEvent';
 import Setting from '../views/setting/Setting';
 
+import HomeIcon from '../../assets/icons/HomeIcon.tsx';
+import StatisticIcon from '../../assets/icons/StatisticIcon.tsx';
+import AddIcon from '../../assets/icons/AddIcon.tsx';
+import CalendarIcon from '../../assets/icons/CalendarIcon.tsx';
+import ProfileIcon from '../../assets/icons/ProfileIcon.tsx';
 
 const MainTab = createBottomTabNavigator();
 
 function Tabs(): React.JSX.Element {
-
     return (
         <MainTab.Navigator
             screenOptions={{
                 headerShown: false,
-                tabBarShowLabel: false,
                 tabBarStyle: {
-                    position: 'absolute',
-                    bottom: 40,
-                    marginHorizontal: 32,
-                    borderRadius: BorderRadius.br1000,
-                    backgroundColor: '#212529',
-                    borderTopWidth: 0.5,
-                    height: 80,
+                    backgroundColor: '#1e1e1e',
+                    borderTopColor: '#1F2937'
                 },
-                tabBarItemStyle: {
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                },
-                tabBarIconStyle: {
-                    marginTop: 20, // tránh bị lệch lên
-                },
+                tabBarActiveTintColor: '#FFD700',
             }}
-            initialRouteName="Home" >
+            initialRouteName="Home"
+        >
             <MainTab.Screen
                 name="Home"
                 component={Home}
                 options={{
-                    tabBarShowLabel: false,
-                    tabBarIcon: ({ focused }) => (
-                        <View style={{
-                            padding: 10,
-                            borderRadius: BorderRadius.br1000,
-                            backgroundColor: focused ? '#fff' : 'transparent',
-                        }}>
-                            <Image
-                                source={focused ? require('../../assets/icons/home_black.png') : require('../../assets/icons/home_white.png')}
-                                style={{
-                                    width: 40,
-                                    height: 40,
-                                }}
-                            />
-                        </View>
+                    tabBarLabel: 'Trang chủ',
+                    tabBarIcon: ({ color, size }) => (
+                        <HomeIcon width={size} height={size} fill={color} />
                     ),
                 }}
             />
-
-            <MainTab.Screen name="AddEvent" component={AddEvent}
-                options=
-                {{
-                    tabBarShowLabel: false,
-                    tabBarIcon: ({ focused }) => (
-                        <View style={{
-                            padding: 10,
-                            borderRadius: BorderRadius.br1000,
-                            backgroundColor: focused ? '#fff' : 'transparent',
-                        }}>
-                            <Image
-                                source={focused ? require('../../assets/icons/note_add_black.png') : require('../../assets/icons/note_add_white.png')}
-                                style={{
-                                    width: 40,
-                                    height: 40,
-                                }}
-                            />
-                        </View>
-                    ),
-                }}
-            />
-            <MainTab.Screen name="Setting" component={Setting}
+            <MainTab.Screen
+                name="Statistic"
+                component={Profile}
                 options={{
-                    tabBarShowLabel: false,
-                    tabBarIcon: ({ focused }) => (
-                        <View style={{
-                            padding: 10,
-                            borderRadius: BorderRadius.br1000,
-                            backgroundColor: focused ? '#fff' : 'transparent',
-                        }}>
-                            <Image
-                                source={focused ? require('../../assets/icons/setting_black.png') : require('../../assets/icons/setting_white.png')}
-                                style={{
-                                    width: 40,
-                                    height: 40,
-                                }}
-                            />
-                        </View>
+                    tabBarLabel: 'Thống kê',
+                    tabBarIcon: ({ color, size }) => (
+                        <StatisticIcon width={size} height={size} fill={color} />
                     ),
                 }}
             />
-            <MainTab.Screen name="Profile" component={Profile}
+            <MainTab.Screen
+                name="AddEvent"
+                component={AddEvent}
                 options={{
-                    tabBarShowLabel: false,
-                    tabBarIcon: ({ focused }) => (
-                        <View style={{
-                            padding: 10,
-                            borderRadius: BorderRadius.br1000,
-                            backgroundColor: focused ? '#fff' : 'transparent',
-                        }}>
-                            <Image
-                                source={focused ? require('../../assets/icons/profile_black.png') : require('../../assets/icons/profile_white.png')}
-                                style={{
-                                    width: 40,
-                                    height: 40,
-                                }}
-                            />
-                        </View>
+                    tabBarLabel: 'Thêm sự kiện',
+                    tabBarIcon: ({ color, size }) => (
+                        <AddIcon width={size} height={size} fill={color} />
                     ),
-                }} />
+                }}
+            />
+            <MainTab.Screen
+                name="Setting"
+                component={Setting}
+                options={{
+                    tabBarLabel: 'Lịch',
+                    tabBarIcon: ({ color, size }) => (
+                        <CalendarIcon width={size} height={size} fill={color} />
+                    ),
+                }}
+            />
+            <MainTab.Screen
+                name="Profile"
+                component={Profile}
+                options={{
+                    tabBarLabel: 'Tài khoản',
+                    tabBarIcon: ({ color, size }) => (
+                        <ProfileIcon width={size} height={size} fill={color} />
+                    ),
+                }}
+            />
         </MainTab.Navigator>
     );
 }
